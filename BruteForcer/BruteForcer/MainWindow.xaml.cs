@@ -22,7 +22,7 @@ namespace BruteForcer
     public partial class MainWindow : Window
     {
         public bool PasswordFound = false;
-        public string Password = "Z";
+        public string Password = "CAR";
         public MainWindow()
         {
             InitializeComponent();
@@ -44,16 +44,51 @@ namespace BruteForcer
             while (PasswordFound == false)
             {
                 int i = 0;
-                while (i != 25 && PasswordFound == false)
-                {
+               while (i != 25 && PasswordFound == false)
+               {
+
                     string PasswordGuess = Characters[i];
                     Trace.WriteLine(PasswordGuess);
-                    if(PasswordGuess == Password)
+                   
+                    if (PasswordGuess == Password)
                     {
                         PasswordFound = true;
                         Trace.WriteLine("Found the password!");
                     }
+
+                    int A = 0;
+                    while (A != 25 || PasswordFound == false)
+                    {
+                        PasswordGuess = Characters[i] + Characters[A];
+                        Trace.WriteLine(PasswordGuess);
+                        if (PasswordGuess == Password)
+                        {
+                            PasswordFound = true;
+                            Trace.WriteLine("Found the password!");
+                        }
+                        int B = 0;
+                        while (B != 25 || PasswordFound == false)
+                        {
+                            PasswordGuess = Characters[i] + Characters[A] + Characters[B];
+                            Trace.WriteLine(PasswordGuess);
+                            if (PasswordGuess == Password)
+                            {
+                                PasswordFound = true;
+                                Trace.WriteLine("Found the password!");
+                            }
+                            B++;
+                        }
+                        A++;
+                    }
+
+
+            /*        if(PasswordGuess == Password)
+                    {
+                        PasswordFound = true;
+                        Trace.WriteLine("Found the password!");
+                    }*/
                     i++;
+                    
                 }
             }
     }
