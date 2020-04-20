@@ -23,7 +23,7 @@ namespace BruteForcer
     public partial class MainWindow : Window
     {
         public bool PasswordFound = false;
-        public string Password = "DJ";
+        public string Password = "A";
         public MainWindow()
         {
             InitializeComponent();
@@ -36,6 +36,8 @@ namespace BruteForcer
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Thread timer = new Thread(new ThreadStart(Timer));
+            timer.Start();
             PasswordFound = false;
             BruteForce();
         }
@@ -75,28 +77,21 @@ namespace BruteForcer
                         }
                         A++;
                     }
-                   // A = 0;
                     i++;
                 }
-              /*  while (B != 25 || PasswordFound == false)
-                {
-                    PasswordGuess = Characters[i] + Characters[A] + Characters[B];
-                    Trace.WriteLine(PasswordGuess);
-                    if (PasswordGuess == Password)
-                    {
-                        PasswordFound = true;
-                        Trace.WriteLine("Found the password!");
-                    }
-                    B++;
-                }
-            */
+        
             }
-                        
-                    }
+        }
 
-        public void timer()
+        public void Timer()
         {
-            Thread.Sleep(100);
+            double TimeTook = 0;
+            while (PasswordFound == false)
+            {
+                Thread.Sleep(100);
+                TimeTook += 0.1;
+            }
+            Trace.WriteLine("This operation took " + TimeTook.ToString() + " Seconds!");
 
         }
                     
