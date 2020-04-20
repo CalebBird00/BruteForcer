@@ -23,7 +23,6 @@ namespace BruteForcer
     public partial class MainWindow : Window
     {
 
-        public static int Threads = 10000;
         public MainWindow()
         {
             InitializeComponent();
@@ -36,28 +35,10 @@ namespace BruteForcer
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Thread timer = new Thread(new ThreadStart(Timer));
-            timer.Start();
-            for (int i = 0; i != Threads; i++){
-                Trace.WriteLine("Creating thread " + i.ToString());
-                Thread Brute = new Thread(new ThreadStart(BruteForce.Brute));
-                Brute.Start();
-            }
-            BruteForce.PasswordFound = false;
-            BruteForce.Brute();
+            Thread init = new Thread(new ThreadStart(BruteForce.setup));
+            init.Start();
         }
 
-        public void Timer()
-        {
-            double TimeTook = 0;
-            while (BruteForce.PasswordFound == false)
-            {
-                Thread.Sleep(100);
-                TimeTook += 0.1;
-            }
-            Trace.WriteLine("This operation took " + TimeTook.ToString() + " Seconds!");
-
-        }
                     
     }
             
