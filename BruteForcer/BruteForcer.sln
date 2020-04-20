@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BruteForcer", "BruteForcer\BruteForcer.csproj", "{2EF4FCF0-3CC9-4E49-98D0-3F857EE77EFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EF4FCF0-3CC9-4E49-98D0-3F857EE77EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EF4FCF0-3CC9-4E49-98D0-3F857EE77EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EF4FCF0-3CC9-4E49-98D0-3F857EE77EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EF4FCF0-3CC9-4E49-98D0-3F857EE77EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1CE91EC3-893A-47DB-BF5D-4CFF9C4AAA8D}
+	EndGlobalSection
+EndGlobal
