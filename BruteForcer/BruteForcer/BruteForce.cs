@@ -12,7 +12,7 @@ namespace BruteForcer
 
 
         public static bool PasswordFound = false;
-        public static string Password = "ZZZ";
+        public static string Password = "H37I";
 
         public static void setup()
         {
@@ -21,64 +21,93 @@ namespace BruteForcer
             timer.Start();
             for (int i = 0; i != Threads; i++)
             {
-                Trace.WriteLine("Creating thread " + i.ToString());
+               // Trace.WriteLine("Creating thread " + i.ToString());
                 Thread Brute = new Thread(new ThreadStart(BruteForce.Brute));
                 Brute.Start();
             }
             BruteForce.PasswordFound = false;
-            BruteForce.Brute();
 
         }
         public static void Brute()
         {
-            string[] Characters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+            string[] Characters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "1", "2","3","4","5","6","7","8","9" };
             while (PasswordFound == false)
             {
                 string PasswordGuess;
                 int i = 0;
- 
-                while (i != 25 && PasswordFound == false)
+                
+                while (i != 34 && PasswordFound == false)
                 {
 
-
-                    PasswordGuess = Characters[i];
-                    Trace.WriteLine(PasswordGuess);
+                    Random rnd = new Random();
+                    int num = rnd.Next(0, 34);
+                    PasswordGuess = Characters[num];
+                    //Trace.WriteLine(PasswordGuess);
 
                     if (PasswordGuess == Password)
                     {
                         PasswordFound = true;
                         Trace.WriteLine("Found the password!");
+                        Trace.WriteLine(PasswordGuess);
                     }
 
 
                     int A = 0;
-                    while (A < 25 && PasswordFound == false)
+                    while (A < 34 && PasswordFound == false)
                     {
-                        Trace.WriteLine(i.ToString() + " " + A.ToString());
-                        PasswordGuess = Characters[i] + Characters[A];
-                        Trace.WriteLine(PasswordGuess);
+                        num = rnd.Next(0, 34);
+                        int num2 = rnd.Next(0, 34);
+                        //Trace.WriteLine(i.ToString() + " " + A.ToString());
+                        PasswordGuess = Characters[num] + Characters[num2];
+                       // Trace.WriteLine(PasswordGuess);
 
                         if (PasswordGuess == Password)
                         {
                             PasswordFound = true;
                             Trace.WriteLine("Found the password!");
+                            Trace.WriteLine(PasswordGuess);
                         }
-                        A++;
+                        
 
                         int B = 0;
-                        while (B < 25 && PasswordFound == false)
+                        while (B < 34 && PasswordFound == false)
                         {
+                            num = rnd.Next(0, 34);
+                            num2 = rnd.Next(0, 34);
+                            int num3 = rnd.Next(0, 34);
                             //Trace.WriteLine(i.ToString() + " " + A.ToString());
-                            PasswordGuess = Characters[i] + Characters[A] + Characters[B];
-                            Trace.WriteLine(PasswordGuess);
+                            PasswordGuess = Characters[num] + Characters[num2] + Characters[num3];
+                            //Trace.WriteLine(PasswordGuess);
 
                             if (PasswordGuess == Password)
                             {
                                 PasswordFound = true;
                                 Trace.WriteLine("Found the password!");
+                                Trace.WriteLine(PasswordGuess);
                             }
+                            int C = 0;
+                            while (C <34 && PasswordFound == false)
+                            {
+                                num = rnd.Next(0, 34);
+                                num2 = rnd.Next(0, 34);
+                                num3 = rnd.Next(0, 34);
+                                int num4 = rnd.Next(0, 34);
+                                //Trace.WriteLine(i.ToString() + " " + A.ToString());
+                                PasswordGuess = Characters[num] + Characters[num2] + Characters[num3] + Characters[num4];
+                                //Trace.WriteLine(PasswordGuess);
+
+                                if (PasswordGuess == Password)
+                                {
+                                    PasswordFound = true;
+                                    Trace.WriteLine("Found the password!");
+                                    Trace.WriteLine(PasswordGuess);
+                                }
+                                C++;
+                            }
+
                             B++;
                         }
+                        A++;
                     }
                     i++;
                 }
