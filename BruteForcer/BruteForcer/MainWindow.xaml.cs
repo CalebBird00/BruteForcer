@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.Threading;
 
 namespace BruteForcer
 {
@@ -22,7 +23,7 @@ namespace BruteForcer
     public partial class MainWindow : Window
     {
         public bool PasswordFound = false;
-        public string Password = "CAR";
+        public string Password = "DJ";
         public MainWindow()
         {
             InitializeComponent();
@@ -43,54 +44,63 @@ namespace BruteForcer
             string[] Characters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
             while (PasswordFound == false)
             {
+                string PasswordGuess;
                 int i = 0;
-               while (i != 25 && PasswordFound == false)
-               {
+                int B = 0;
+                while (i != 25 && PasswordFound == false)
+                {
 
-                    string PasswordGuess = Characters[i];
+
+                    PasswordGuess = Characters[i];
                     Trace.WriteLine(PasswordGuess);
-                   
+                    
                     if (PasswordGuess == Password)
                     {
                         PasswordFound = true;
                         Trace.WriteLine("Found the password!");
                     }
 
+
                     int A = 0;
-                    while (A != 25 || PasswordFound == false)
+                    while (A < 25 && PasswordFound == false)
                     {
+                        Trace.WriteLine(i.ToString() + " " + A.ToString());
                         PasswordGuess = Characters[i] + Characters[A];
                         Trace.WriteLine(PasswordGuess);
+                       
                         if (PasswordGuess == Password)
                         {
                             PasswordFound = true;
                             Trace.WriteLine("Found the password!");
                         }
-                        int B = 0;
-                        while (B != 25 || PasswordFound == false)
-                        {
-                            PasswordGuess = Characters[i] + Characters[A] + Characters[B];
-                            Trace.WriteLine(PasswordGuess);
-                            if (PasswordGuess == Password)
-                            {
-                                PasswordFound = true;
-                                Trace.WriteLine("Found the password!");
-                            }
-                            B++;
-                        }
                         A++;
                     }
-
-
-            /*        if(PasswordGuess == Password)
+                   // A = 0;
+                    i++;
+                }
+              /*  while (B != 25 || PasswordFound == false)
+                {
+                    PasswordGuess = Characters[i] + Characters[A] + Characters[B];
+                    Trace.WriteLine(PasswordGuess);
+                    if (PasswordGuess == Password)
                     {
                         PasswordFound = true;
                         Trace.WriteLine("Found the password!");
-                    }*/
-                    i++;
-                    
+                    }
+                    B++;
                 }
+            */
             }
+                        
+                    }
+
+        public void timer()
+        {
+            Thread.Sleep(100);
+
+        }
+                    
     }
-    }
+            
 }
+
