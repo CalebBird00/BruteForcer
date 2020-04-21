@@ -135,6 +135,23 @@ namespace BruteForcer
             }
         }
 
+        public static void newBrute()
+        {
+            string[] Characters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+            string password = "Clover2014";
+            List<string> PasswordGuess = new List<string>();
+            string passguess = "";
+            for (int i = 0; i < 25; i++)
+            {
+
+                passguess = Characters[i];
+                Trace.WriteLine(passguess);
+
+            }
+
+
+        }d
+
         public static void Timer()
         {
             double TimeTook = 0;

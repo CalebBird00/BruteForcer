@@ -35,8 +35,10 @@ namespace BruteForcer
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Thread init = new Thread(new ThreadStart(BruteForce.setup));
-            init.Start();
+            /* Thread init = new Thread(new ThreadStart(BruteForce.setup));
+             init.Start();
+             */
+            BruteForce.newBrute();
         }
 
                     
