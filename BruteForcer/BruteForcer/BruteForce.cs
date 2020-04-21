@@ -8,11 +8,11 @@ namespace BruteForcer
 {
     class BruteForce
     {
-        public static int Threads = 4;
+        public static int Threads = 2;
 
 
         public static bool PasswordFound = false;
-        public static string Password = "H37I";
+        public static string Password = "Z37AJ";
 
         public static void setup()
         {
@@ -101,6 +101,26 @@ namespace BruteForcer
                                     PasswordFound = true;
                                     Trace.WriteLine("Found the password!");
                                     Trace.WriteLine(PasswordGuess);
+                                }
+                                int D = 0;
+                                while (D < 34 && PasswordFound == false)
+                                {
+                                    num = rnd.Next(0, 34);
+                                    num2 = rnd.Next(0, 34);
+                                    num3 = rnd.Next(0, 34);
+                                    num4 = rnd.Next(0, 34);
+                                    int num5 = rnd.Next(0, 34);
+                                    //Trace.WriteLine(i.ToString() + " " + A.ToString());
+                                    PasswordGuess = Characters[num] + Characters[num2] + Characters[num3] + Characters[num4] + Characters[num5];
+                                    //Trace.WriteLine(PasswordGuess);
+
+                                    if (PasswordGuess == Password)
+                                    {
+                                        PasswordFound = true;
+                                        Trace.WriteLine("Found the password!");
+                                        Trace.WriteLine(PasswordGuess);
+                                    }
+                                    D++;
                                 }
                                 C++;
                             }
