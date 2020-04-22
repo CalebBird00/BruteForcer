@@ -143,14 +143,20 @@ namespace BruteForcer
             string passguess = "";
             for (int i = 0; i < 25; i++)
             {
-
+               
                 passguess = Characters[i];
                 Trace.WriteLine(passguess);
+                for (int a = 0; a <25; a++)
+                {
+                    passguess += Characters[a];
+                    Trace.WriteLine(passguess);
+                }
+                
 
             }
 
 
-        }d
+        }
 
         public static void Timer()
         {
