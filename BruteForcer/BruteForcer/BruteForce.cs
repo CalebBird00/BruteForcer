@@ -137,25 +137,43 @@ namespace BruteForcer
 
         public static void newBrute()
         {
-            string[] Characters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+            string[] Characters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X",
+                "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
             string password = "Clover2014";
             List<string> PasswordGuess = new List<string>();
             string passguess = "";
-            for (int i = 0; i < 25; i++)
+            while (PasswordFound == false)
             {
-               
-                passguess = Characters[i];
-                Trace.WriteLine(passguess);
-                for (int a = 0; a <25; a++)
+                for (int i = 0; i < 25; i++)
                 {
-                    passguess += Characters[a];
+
+
+                    passguess = Characters[i];
                     Trace.WriteLine(passguess);
+                    for (int a = 0; a != 7; a++)
+                    { 
+                        passguess += Characters[i];
+                        Trace.WriteLine(passguess);
+                    }
+
+                  passguess = Characters[i];
+                    for (int b = 0; b != 7; b++)
+                    {
+                        passguess += Characters[i + 1];
+                        Trace.WriteLine(passguess);
+
+                    }
+                    for(int c =0; c !=7; b++)
+                    {
+                        passguess = passguess.
+                    }
+                    
+
                 }
-                
+                Trace.WriteLine("Done!");
+
 
             }
-
-
         }
 
         public static void Timer()
