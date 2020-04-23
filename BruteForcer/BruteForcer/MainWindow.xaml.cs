@@ -48,6 +48,11 @@ namespace BruteForcer
         {
 
         }
+
+        public void ConsoleBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
             
 }

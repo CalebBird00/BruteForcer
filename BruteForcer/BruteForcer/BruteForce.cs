@@ -18,7 +18,7 @@ namespace BruteForcer
 
         public static void setup()
         {
-
+            BruteForce.PasswordFound = false;
             Thread timer = new Thread(new ThreadStart(Timer));
             timer.Start();
             for (int i = 0; i != Threads; i++)
@@ -27,7 +27,7 @@ namespace BruteForcer
                 Thread Brute = new Thread(new ThreadStart(BruteForce.newBrute));
                 Brute.Start();
             }
-            BruteForce.PasswordFound = false;
+            
 
         }
 
@@ -46,17 +46,17 @@ namespace BruteForcer
                     Random rand = new Random();
                     int A = rand.Next(0, 34);
                     passguess = passguess.Insert(i, Characters[A]);
-                   // Trace.WriteLine(passguess);
+                    //Console.UserConsole(passguess);
                     guesses++;
-                    //Trace.WriteLine(Characters.Length);
-                    if(passguess == password)
+                    //Console.UserConsole(Characters.Length);
+                    if (passguess == password)
                     {
-                        Trace.WriteLine("DONE!");
+                        Console.UserConsole("DONE!");
                         PasswordFound = true;
                     }
                 }
             }
-            Trace.WriteLine("Done!");
+            Console.UserConsole("Done!");
 
 
         }
@@ -70,8 +70,8 @@ namespace BruteForcer
                 Thread.Sleep(100);
                 TimeTook += 0.1;
             }
-            Trace.WriteLine("This operation took " + TimeTook.ToString() + " Seconds!");
-            Trace.WriteLine("It took " + guesses + " guesses!");
+            Console.UserConsole("This operation took " + TimeTook.ToString() + " Seconds!");
+            Console.UserConsole("It took " + guesses + " guesses!");
 
         }
     }
