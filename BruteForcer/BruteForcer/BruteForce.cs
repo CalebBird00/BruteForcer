@@ -8,11 +8,13 @@ namespace BruteForcer
 {
     class BruteForce
     {
-        public static int Threads = 2;
+        public static int Threads = 3;
 
 
         public static bool PasswordFound = false;
-        public static string Password = "Z37AJ";
+        public static string password = "CLOVE";
+        static int guesses = 0;
+
 
         public static void setup()
         {
@@ -21,171 +23,57 @@ namespace BruteForcer
             timer.Start();
             for (int i = 0; i != Threads; i++)
             {
-               // Trace.WriteLine("Creating thread " + i.ToString());
-                Thread Brute = new Thread(new ThreadStart(BruteForce.Brute));
+                 Trace.WriteLine("Creating thread " + i.ToString());
+                Thread Brute = new Thread(new ThreadStart(BruteForce.newBrute));
                 Brute.Start();
             }
             BruteForce.PasswordFound = false;
 
         }
-        public static void Brute()
-        {
-            string[] Characters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "1", "2","3","4","5","6","7","8","9" };
-            while (PasswordFound == false)
-            {
-                string PasswordGuess;
-                int i = 0;
-                
-                while (i != 34 && PasswordFound == false)
-                {
-
-                    Random rnd = new Random();
-                    int num = rnd.Next(0, 34);
-                    PasswordGuess = Characters[num];
-                    //Trace.WriteLine(PasswordGuess);
-
-                    if (PasswordGuess == Password)
-                    {
-                        PasswordFound = true;
-                        Trace.WriteLine("Found the password!");
-                        Trace.WriteLine(PasswordGuess);
-                    }
-
-
-                    int A = 0;
-                    while (A < 34 && PasswordFound == false)
-                    {
-                        num = rnd.Next(0, 34);
-                        int num2 = rnd.Next(0, 34);
-                        //Trace.WriteLine(i.ToString() + " " + A.ToString());
-                        PasswordGuess = Characters[num] + Characters[num2];
-                       // Trace.WriteLine(PasswordGuess);
-
-                        if (PasswordGuess == Password)
-                        {
-                            PasswordFound = true;
-                            Trace.WriteLine("Found the password!");
-                            Trace.WriteLine(PasswordGuess);
-                        }
-                        
-
-                        int B = 0;
-                        while (B < 34 && PasswordFound == false)
-                        {
-                            num = rnd.Next(0, 34);
-                            num2 = rnd.Next(0, 34);
-                            int num3 = rnd.Next(0, 34);
-                            //Trace.WriteLine(i.ToString() + " " + A.ToString());
-                            PasswordGuess = Characters[num] + Characters[num2] + Characters[num3];
-                            //Trace.WriteLine(PasswordGuess);
-
-                            if (PasswordGuess == Password)
-                            {
-                                PasswordFound = true;
-                                Trace.WriteLine("Found the password!");
-                                Trace.WriteLine(PasswordGuess);
-                            }
-                            int C = 0;
-                            while (C <34 && PasswordFound == false)
-                            {
-                                num = rnd.Next(0, 34);
-                                num2 = rnd.Next(0, 34);
-                                num3 = rnd.Next(0, 34);
-                                int num4 = rnd.Next(0, 34);
-                                //Trace.WriteLine(i.ToString() + " " + A.ToString());
-                                PasswordGuess = Characters[num] + Characters[num2] + Characters[num3] + Characters[num4];
-                                //Trace.WriteLine(PasswordGuess);
-
-                                if (PasswordGuess == Password)
-                                {
-                                    PasswordFound = true;
-                                    Trace.WriteLine("Found the password!");
-                                    Trace.WriteLine(PasswordGuess);
-                                }
-                                int D = 0;
-                                while (D < 34 && PasswordFound == false)
-                                {
-                                    num = rnd.Next(0, 34);
-                                    num2 = rnd.Next(0, 34);
-                                    num3 = rnd.Next(0, 34);
-                                    num4 = rnd.Next(0, 34);
-                                    int num5 = rnd.Next(0, 34);
-                                    //Trace.WriteLine(i.ToString() + " " + A.ToString());
-                                    PasswordGuess = Characters[num] + Characters[num2] + Characters[num3] + Characters[num4] + Characters[num5];
-                                    //Trace.WriteLine(PasswordGuess);
-
-                                    if (PasswordGuess == Password)
-                                    {
-                                        PasswordFound = true;
-                                        Trace.WriteLine("Found the password!");
-                                        Trace.WriteLine(PasswordGuess);
-                                    }
-                                    D++;
-                                }
-                                C++;
-                            }
-
-                            B++;
-                        }
-                        A++;
-                    }
-                    i++;
-                }
-
-            }
-        }
 
         public static void newBrute()
         {
             string[] Characters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X",
-                "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-            string password = "Clover2014";
+                "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "" };
             List<string> PasswordGuess = new List<string>();
-            string passguess = "";
+            
             while (PasswordFound == false)
             {
-                for (int i = 0; i < 25; i++)
+                string passguess = "";
+                for (int i = 0; i != 15; i++)
                 {
-
-
-                    passguess = Characters[i];
-                    Trace.WriteLine(passguess);
-                    for (int a = 0; a != 7; a++)
-                    { 
-                        passguess += Characters[i];
-                        Trace.WriteLine(passguess);
-                    }
-
-                  passguess = Characters[i];
-                    for (int b = 0; b != 7; b++)
+                   // Trace.WriteLine(password);
+                    Random rand = new Random();
+                    int A = rand.Next(0, 34);
+                    passguess = passguess.Insert(i, Characters[A]);
+                   // Trace.WriteLine(passguess);
+                    guesses++;
+                    //Trace.WriteLine(Characters.Length);
+                    if(passguess == password)
                     {
-                        passguess += Characters[i + 1];
-                        Trace.WriteLine(passguess);
-
+                        Trace.WriteLine("DONE!");
+                        PasswordFound = true;
                     }
-                    for(int c =0; c !=7; b++)
-                    {
-                        passguess = passguess.
-                    }
-                    
-
                 }
-                Trace.WriteLine("Done!");
-
-
             }
+            Trace.WriteLine("Done!");
+
+
         }
+
 
         public static void Timer()
         {
             double TimeTook = 0;
-            while (BruteForce.PasswordFound == false)
+            while (PasswordFound == false)
             {
                 Thread.Sleep(100);
                 TimeTook += 0.1;
             }
             Trace.WriteLine("This operation took " + TimeTook.ToString() + " Seconds!");
+            Trace.WriteLine("It took " + guesses + " guesses!");
 
         }
     }
 }
+

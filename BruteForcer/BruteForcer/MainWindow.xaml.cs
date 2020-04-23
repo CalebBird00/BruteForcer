@@ -38,10 +38,16 @@ namespace BruteForcer
             /* Thread init = new Thread(new ThreadStart(BruteForce.setup));
              init.Start();
              */
-            BruteForce.newBrute();
+            BruteForce.password = Password_Box.Text;
+            BruteForce.Threads = Convert.ToInt32(Thread_Box.Text);
+            BruteForce.setup();
+          
         }
 
-                    
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
             
 }
