@@ -35,11 +35,24 @@ namespace BruteForcer
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Thread init = new Thread(new ThreadStart(BruteForce.setup));
-            init.Start();
+            /* Thread init = new Thread(new ThreadStart(BruteForce.setup));
+             init.Start();
+             */
+            BruteForce.password = Password_Box.Text;
+            BruteForce.Threads = Convert.ToInt32(Thread_Box.Text);
+            BruteForce.setup();
+          
         }
 
-                    
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        public void ConsoleBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
             
 }
